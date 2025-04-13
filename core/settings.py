@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True if os.environ.get('DEBUG') and os.environ.get('DEBUG').lower() == 'true' else False
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(",") if os.environ.get('ALLOWED_HOSTS') else []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(",") if os.environ.get('ALLOWED_HOSTS') else ['127.0.0.1']
 
 # Application definition
 
