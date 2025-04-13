@@ -13,6 +13,11 @@ class RegistrationForm(UserCreationForm):
       label=_("Password Confirmation"),
       widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password Confirmation'}),
   )
+  email = forms.EmailField(
+        required=True,
+        label=_("Email"),
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
+    )
 
   class Meta:
     model = User
@@ -22,10 +27,6 @@ class RegistrationForm(UserCreationForm):
       'username': forms.TextInput(attrs={
           'class': 'form-control',
           'placeholder': 'Username'
-      }),
-      'email': forms.EmailInput(attrs={
-          'class': 'form-control',
-          'placeholder': 'Email'
       })
     }
 
