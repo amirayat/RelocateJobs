@@ -8,3 +8,4 @@ class Job(models.Model):
     job_id = models.CharField(max_length=10, unique=True, db_index=True)
     checked = models.BooleanField(default=False)
     relocation = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
