@@ -8,15 +8,16 @@ class Job(models.Model):
     job_id = models.CharField(max_length=10, unique=True, db_index=True)
     checked = models.BooleanField(default=False)
     relocation = models.BooleanField(default=False)
-    starts = models.PositiveIntegerField(default=0)
+    upvote = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
 
 
 class Location(models.Model):
     """
     linkedin location model
     """
-    name = models.CharField(max_length=32, unique=True, db_index=True)
+    keyword = models.CharField(max_length=32, unique=True, db_index=True)
 
 
 class Search(models.Model):
