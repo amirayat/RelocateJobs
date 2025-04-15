@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Linkedin',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('li_at_cookie', models.TextField()),
+                ('li_at_cookie', models.TextField(unique=True)),
             ],
         ),
     ]

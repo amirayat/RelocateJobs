@@ -5,4 +5,4 @@ class Linkedin(models.Model):
     """
     linkedin config
     """
-    li_at_cookie = models.TextField()
+    li_at_cookie = models.TextField(unique=True)
