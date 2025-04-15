@@ -73,6 +73,7 @@ TEMPLATES = [
                 "job.context_processors.processed_jobs",
                 "job.context_processors.relocation_jobs",
                 "job.context_processors.locations",
+                "job.context_processors.locations_list",
                 "job.context_processors.search_terms",
             ],
         },

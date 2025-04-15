@@ -2,7 +2,7 @@ from .models import Job, Location, Search
 
 
 def processed_jobs(request):
-    return {'processed_jobs': Job.objects.filter(active=True).count()}
+    return {'processed_jobs': Job.objects.count()}
 
 
 def relocation_jobs(request):
@@ -11,6 +11,10 @@ def relocation_jobs(request):
 
 def locations(request):
     return {'locations': Location.objects.count()}
+
+
+def locations_list(request):
+    return {'locations_list': Location.objects.all()}
 
 
 def search_terms(request):
