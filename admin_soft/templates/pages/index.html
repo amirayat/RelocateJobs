@@ -269,20 +269,20 @@
             <div class="card-header pb-0">
               <h6>Job Search Keywords</h6>
             </div>
+            <div class="card-body">
             {% for loc in locations_list %}
-              <div class="card-body">
-                <div class="timeline timeline-one-side">
-                  <div class="timeline-block mb-0">
-                    <span class="timeline-step">
-                      <i class="ni ni-fat-add text-success text-gradient"></i>
-                    </span>
-                    <div class="timeline-content">
-                      <h6 class="text-dark text-sm mb-0">{{ loc.keyword }}</h6>
-                    </div>
+              <div class="timeline timeline-one-side">
+                <div class="timeline-block mb-0">
+                  <span class="timeline-step">
+                    <i class="ni ni-fat-add text-success text-gradient"></i>
+                  </span>
+                  <div class="timeline-content">
+                    <h6 class="text-dark text-sm mb-0">{{ loc.keyword }}</h6>
                   </div>
                 </div>
               </div>
             {% endfor %}
+            </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-6">
@@ -290,8 +290,8 @@
             <div class="card-header pb-0">
               <h6>Locations</h6>
             </div>
-            {% for loc in locations_list %}
-              <div class="card-body">
+            <div class="card-body">
+              {% for loc in locations_list %}
                 <div class="timeline timeline-one-side">
                   <div class="timeline-block mb-0">
                     <span class="timeline-step">
@@ -302,8 +302,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            {% endfor %}
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
