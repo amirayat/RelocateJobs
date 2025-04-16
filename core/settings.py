@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     "job.apps.JobConfig",
     "scraper.apps.ScraperConfig",
+    "llm.apps.LlmConfig",
 ]
 
 MIDDLEWARE = [
