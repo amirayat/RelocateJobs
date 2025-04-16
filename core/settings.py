@@ -146,3 +146,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# https://pypi.org/project/django-crontab/
+CRONJOBS = [
+    ('0 1 * * *', 'scraper.cron.search_linkedin_jobs')
+]

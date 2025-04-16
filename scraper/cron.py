@@ -1,9 +1,11 @@
 import time
+from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
 from scraper.models import Linkedin
-from job.models import Location, Search
+from job.models import Location, Search, Job
 
 
 # Set up Chrome
@@ -33,8 +35,9 @@ se_cookie = {
 driver.add_cookie(se_cookie)
 
 
-locations = Location.objects.all().values_list(flat=True)
-keywords = Search.objects.all().values_list(flat=True)
+locations = Location.objects.all().values_list('keyword', flat=True).distinct()
+keywords = Search.objects.all().values_list('keyword', flat=True).distinct()
+gathered_jobs = list(Job.objects.all().values_list('job_id', flat=True).distinct())
 
 
 def search_linkedin_jobs():
@@ -49,22 +52,23 @@ def search_linkedin_jobs():
                 url = f'https://www.linkedin.com/jobs/search?keywords={keyword}&location={location}&f_TPR=r2592000&f_JT=F%2CC&f_E=2%2C3%2C4%2C5%2C6&f_WT=1%2C3&start={page*25}'        
                 # get list of jobs
                 driver.get(url)
+                # sleep 10 sec until full load
+                time.sleep(10)
                 html = driver.page_source
                 soup = BeautifulSoup(html, "html.parser")
-                # sleep 10 sec until full load
-                # time.sleep(10)
                 links = [a['href'] for a in soup.find_all('a', href=True)]
-                jobs = list(set([link for link in links if link.startswith('/jobs/view/')]))
-                job_ids = gathered_jobs()
+                jobs = [link for link in links if link.startswith('/jobs/view/')]
+                job_ids = list(set([job.split("/")[3] for job in jobs]))
                 # append new jobs to jobs csv
-                for job in jobs:
-                    if job.split("/")[3] not in job_ids:
-                        with open('./data/jobs.csv','a') as fd:
-                            fd.write(f'{job.split("/")[3]},https://www.linkedin.com{job}')
-                            fd.write("\n")
-                # append new jobs to new_jobs csv
-                for job in jobs:
-                    if job.split("/")[3] not in job_ids:
-                        with open('./data/new_jobs.csv','a') as fd:
-                            fd.write(f'{job.split("/")[3]},https://www.linkedin.com{job}')
-                            fd.write("\n")
+                for job_id in job_ids:
+                    if job_id not in gathered_jobs:
+                        Job.objects.create(job_id=job_id)
+                        gathered_jobs.append(job_id)
+                use_tags = driver.find_elements(By.CSS_SELECTOR, 'use[href="#close-small"]')
+                for tag in use_tags:
+                    try:
+                        #click wrapping <button> if needed
+                        button = tag.find_element(By.XPATH, "./ancestor::button")
+                        button.click()
+                    except Exception as e:
+                        print(f"Failed to click use: {e}")
