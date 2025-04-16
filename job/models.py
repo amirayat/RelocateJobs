@@ -9,7 +9,7 @@ class Job(models.Model):
     checked = models.BooleanField(default=False)
     relocation = models.BooleanField(default=False)
     upvote = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
+    gathered_at = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
 
 

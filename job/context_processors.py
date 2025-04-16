@@ -33,11 +33,11 @@ def search_terms_list(request):
 nine_days_ago = timezone.now().date() - timedelta(days=8)
 
 def recent_9_days_jobs(request):
-    return {'recent_9_days_jobs': Job.objects.filter(created_at__date__gte=nine_days_ago).count()}
+    return {'recent_9_days_jobs': Job.objects.filter(gathered_at__date__gte=nine_days_ago).count()}
 
 def recent_9_days_relocations(request):
     return {'recent_9_days_relocations': Job.objects.filter(relocation=True,
-                                                            created_at__date__gte=nine_days_ago).count()}
+                                                            gathered_at__date__gte=nine_days_ago).count()}
 
 def recent_9_days_upvotes(request):
-    return {'recent_9_days_upvotes': Job.objects.filter(created_at__date__gte=nine_days_ago).aggregate(sum=Sum('upvote'))['sum'] or 0}
+    return {'recent_9_days_upvotes': Job.objects.filter(gathered_at__date__gte=nine_days_ago).aggregate(sum=Sum('upvote'))['sum'] or 0}
