@@ -13,6 +13,9 @@ options = Options()
 options.add_argument("--start-maximized")
 options.add_argument("--headless")        # Run in headless mode
 options.add_argument("--force-device-scale-factor=0.25")
+options.add_argument("--disable-gpu")     # Optional: avoid some rendering issues
+options.add_argument("--no-sandbox")      # Good for Linux
+options.add_argument("--disable-dev-shm-usage")  # Good for Linux
 
 driver = webdriver.Chrome(options=options)
 driver.get("https://www.linkedin.com")
