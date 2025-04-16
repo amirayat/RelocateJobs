@@ -65,10 +65,12 @@ def search_linkedin_jobs():
                         Job.objects.create(job_id=job_id)
                         gathered_jobs.append(job_id)
                 use_tags = driver.find_elements(By.CSS_SELECTOR, 'use[href="#close-small"]')
-                for tag in use_tags:
-                    try:
-                        #click wrapping <button> if needed
-                        button = tag.find_element(By.XPATH, "./ancestor::button")
-                        button.click()
-                    except Exception as e:
-                        print(f"Failed to click use: {e}")
+                if job_ids:
+                    for tag in use_tags:
+                        try:
+                            #click wrapping <button> if needed
+                            button = tag.find_element(By.XPATH, "./ancestor::button")
+                            button.click()
+                            time.sleep(0.5)
+                        except Exception as e:
+                            print(f"Failed to click use: {e}")
