@@ -11,7 +11,7 @@ from job.models import Location, Search, Job
 # Set up Chrome
 options = Options()
 options.add_argument("--start-maximized")
-# options.add_argument("--headless")        # Run in headless mode
+options.add_argument("--headless")        # Run in headless mode
 options.add_argument("--force-device-scale-factor=0.25")
 
 driver = webdriver.Chrome(options=options)
