@@ -6,3 +6,4 @@ django-crontab==0.7.1
 selenium==4.19.0
 beautifulsoup4==4.13.4
 requests==2.32.3
+langdetect==1.0.9

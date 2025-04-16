@@ -150,5 +150,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # https://pypi.org/project/django-crontab/
 CRONJOBS = [
-    ('0 1 * * *', 'scraper.search.search_linkedin_jobs')
+    ('0 1 * * *', 'scraper.search.search_linkedin_jobs'),
+    ('0 * * * *', 'scraper.check.check_linkedin_jobs'),
 ]
