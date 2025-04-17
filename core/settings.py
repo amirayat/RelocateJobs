@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True if os.environ.get('DEBUG') and os.environ.get('DEBUG').lower() == 'true' else False
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(",") if os.environ.get('ALLOWED_HOSTS') else ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "job.apps.JobConfig",
     "scraper.apps.ScraperConfig",
     "llm.apps.LlmConfig",
+    "home.apps.HomeConfig",
 ]
 
 MIDDLEWARE = [
@@ -137,7 +138,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#if not DEBUG:
+# if not DEBUG:
 #    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type

@@ -15,8 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("dashboard/", include('admin_soft.urls'))
+    path("dashboard/", include('admin_soft.urls')),
+    path("", include('home.urls')),
 ]
+
+handler403 = 'home.views.permission_denied'
+handler404 = 'home.views.page_not_found'
+handler500 = 'home.views.server_error'
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
