@@ -13,6 +13,9 @@ class JobAdmin(admin.ModelAdmin):
         'gathered_at',
         'active',
     )
+    search_fields = (
+        'job_id',
+    )
 
 class LocationAdmin(admin.ModelAdmin):
     list_per_page = 10
