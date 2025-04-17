@@ -7,7 +7,7 @@ from django.contrib.auth import logout
 
 # Pages
 def index(request):
-  return render(request, 'pages/index.html', { 'segment': 'index' })
+  return render(request, 'admin/index.html', { 'segment': 'index' })
 
 
 # Authentication
@@ -21,7 +21,7 @@ def register(request):
     if form.is_valid():
       form.save()
       print('Account created successfully!')
-      return redirect('/accounts/login/')
+      return redirect('/dashboard/accounts/login/')
     else:
       print("Register failed!")
   else:
@@ -32,7 +32,7 @@ def register(request):
 
 def logout_view(request):
   logout(request)
-  return redirect('/accounts/login/')
+  return redirect('/dashboard/accounts/login/')
 
 class UserPasswordResetView(PasswordResetView):
   template_name = 'accounts/password_reset.html'
