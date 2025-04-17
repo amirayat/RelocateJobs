@@ -1,3 +1,35 @@
 from django.contrib import admin
+from .models import Job, Location, Search
 
-# Register your models here.
+
+class JobAdmin(admin.ModelAdmin):
+    list_per_page = 10
+    list_display = (
+        'id',
+        'job_id',
+        'checked',
+        'relocation',
+        'upvote',
+        'gathered_at',
+        'active',
+    )
+
+class LocationAdmin(admin.ModelAdmin):
+    list_per_page = 10
+    list_display = (
+        'id',
+        'keyword',
+    )
+
+class SearchAdmin(admin.ModelAdmin):
+    list_per_page = 10
+    list_display = (
+        'id',
+        'keyword',
+    )
+
+admin.site.register(Job, JobAdmin)
+admin.site.register(Location, LocationAdmin)
+admin.site.register(Search, SearchAdmin)
+
+
