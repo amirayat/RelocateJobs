@@ -86,7 +86,6 @@ TEMPLATES = [
                 "job.context_processors.recent_9_days_jobs",
                 "job.context_processors.recent_9_days_relocations",
                 "job.context_processors.recent_9_days_upvotes",
-                "pricing.context_processors.wallet_address",
             ],
         },
     },
