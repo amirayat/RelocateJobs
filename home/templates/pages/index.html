@@ -1,0 +1,503 @@
+{% extends 'layouts/base-design.html' %}
+{% load static %}
+
+{% block title %} RelocateJobs {% endblock title %}
+
+{% block body %} class="index-page" {% endblock body %}
+
+{% block content %}
+
+  <header class="header-2">
+    <div class="page-header min-vh-75 relative" style="background-image: url('{% static 'img/home/RelocateJobs.jpg' %}')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 text-center mx-auto">
+            <h1 class="text-white pt-3 mt-n5" style="text-shadow: 0 0 20px #FF0000, 0 0 5px #0000FF;">RelocateJobs</h1>
+            <p class="lead text-white mt-3" style="text-shadow: 0 0 20px #FF0000, 0 0 5px #0000FF;">All you need to have free internet access<br />Secure and Fast</p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute w-100 z-index-1 bottom-0">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="moving-waves">
+            <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+            <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+            <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+            <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+  <section class="pt-3 pb-4" id="count-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+          <div class="row">
+            <div class="col-md-4 position-relative">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"><span id="state1" countTo="70">0</span>+</h1>
+                <h5 class="mt-3">IP Addresses</h5>
+              </div>
+              <hr class="vertical dark">
+            </div>
+            <div class="col-md-4 position-relative">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"> <span id="state2" countTo="15">0</span>+</h1>
+                <h5 class="mt-3">Cloud Servers</h5>
+              </div>
+              <hr class="vertical dark">
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary">24/7</h1>
+                <h5 class="mt-3">Up Time</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="my-5 py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 ms-auto">
+          <div class="row justify-content-start">
+            <div class="col-md-6">
+              <div class="info">
+                <div class="icon icon-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-globe2 text-primary" viewBox="0 0 16 16">
+                    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+                  </svg>
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <g transform="translate(1716.000000, 291.000000)">
+                          <g transform="translate(154.000000, 300.000000)">
+                            <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" opacity="0.603585379"></path>
+                            <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <h5 class="font-weight-bolder mt-3">All ISPs</h5>
+                <p class="pe-5">RelocateJobs service has no limitation on any Internet Service Provider. MTN, HamrahAval, HiWeb, etc.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info">
+                <div class="icon icon-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-laptop text-primary" viewBox="0 0 16 16">
+                    <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"/>
+                  </svg>
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <g transform="translate(1716.000000, 291.000000)">
+                          <g id="shop-" transform="translate(0.000000, 148.000000)">
+                            <path class="color-background" d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z" opacity="0.598981585"></path>
+                            <path class="color-background" d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <h5 class="font-weight-bolder mt-3">Available on any OS</h5>
+                <p class="pe-3">You can use RelocateJobs on all operting systems, such as Android, IOS, Windows, Mac, Linux, etc.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-start mt-5">
+            <div class="col-md-6 mt-3">
+              <div class="info">
+                <div class="icon icon-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-exchange text-primary" viewBox="0 0 16 16">
+                    <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
+                  </svg>
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-2319.000000, -440.000000)" fill="#923DFA" fill-rule="nonzero">
+                        <g transform="translate(1716.000000, 291.000000)">
+                          <g id="time-alarm" transform="translate(603.000000, 149.000000)">
+                            <path class="color-background" d="M18.8086957,4.70034783 C15.3814926,0.343541521 9.0713063,-0.410050841 4.7145,3.01715217 C0.357693695,6.44435519 -0.395898667,12.7545415 3.03130435,17.1113478 C5.53738466,10.3360568 11.6337901,5.54042955 18.8086957,4.70034783 L18.8086957,4.70034783 Z" opacity="0.6"></path>
+                            <path class="color-background" d="M38.9686957,17.1113478 C42.3958987,12.7545415 41.6423063,6.44435519 37.2855,3.01715217 C32.9286937,-0.410050841 26.6185074,0.343541521 23.1913043,4.70034783 C30.3662099,5.54042955 36.4626153,10.3360568 38.9686957,17.1113478 Z" opacity="0.6"></path>
+                            <path class="color-background" d="M34.3815652,34.7668696 C40.2057958,27.7073059 39.5440671,17.3375603 32.869743,11.0755718 C26.1954189,4.81358341 15.8045811,4.81358341 9.13025701,11.0755718 C2.45593289,17.3375603 1.79420418,27.7073059 7.61843478,34.7668696 L3.9753913,40.0506522 C3.58549114,40.5871271 3.51710058,41.2928217 3.79673036,41.8941824 C4.07636014,42.4955431 4.66004722,42.8980248 5.32153275,42.9456105 C5.98301828,42.9931963 6.61830436,42.6784048 6.98113043,42.1232609 L10.2744783,37.3434783 C16.5555112,42.3298213 25.4444888,42.3298213 31.7255217,37.3434783 L35.0188696,42.1196087 C35.6014207,42.9211577 36.7169135,43.1118605 37.53266,42.5493622 C38.3484064,41.9868639 38.5667083,40.8764423 38.0246087,40.047 L34.3815652,34.7668696 Z M30.1304348,25.5652174 L21,25.5652174 C20.49574,25.5652174 20.0869565,25.1564339 20.0869565,24.6521739 L20.0869565,15.5217391 C20.0869565,15.0174791 20.49574,14.6086957 21,14.6086957 C21.50426,14.6086957 21.9130435,15.0174791 21.9130435,15.5217391 L21.9130435,23.7391304 L30.1304348,23.7391304 C30.6346948,23.7391304 31.0434783,24.1479139 31.0434783,24.6521739 C31.0434783,25.1564339 30.6346948,25.5652174 30.1304348,25.5652174 Z"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <h5 class="font-weight-bolder mt-3">Affiliate Program</h5>
+                <p class="pe-5">We not only bring free internet access, but also provide passive income to our users through our affiliate program.</p>
+              </div>
+            </div>
+            <div class="col-md-6 mt-3">
+              <div class="info">
+                <div class="icon icon-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-key-fill text-primary" viewBox="0 0 16 16">
+                    <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                  </svg>
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <g transform="translate(1716.000000, 291.000000)">
+                          <g id="office" transform="translate(153.000000, 2.000000)">
+                            <path class="color-background" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z" opacity="0.6"></path>
+                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <h5 class="font-weight-bolder mt-3">Security</h5>
+                <p class="pe-3">We provide a secure encrypted connection over the internet. No one will access a single byte of our private data.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+          <div class="card card-background card-background-mask-primary tilt" data-tilt>
+            <div class="full-background" style="background-image: url('{% static 'img/home/team-working.jpg' %}')"></div>
+            <div class="card-body pt-7 text-center">
+              <div class="icon icon-lg up mb-3 mt-3">
+                <svg width="50px" height="50px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <title>box-3d-50</title>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                      <g transform="translate(1716.000000, 291.000000)">
+                        <g id="box-3d-50" transform="translate(603.000000, 0.000000)">
+                          <path d="M22.7597136,19.3090182 L38.8987031,11.2395234 C39.3926816,10.9925342 39.592906,10.3918611 39.3459167,9.89788265 C39.249157,9.70436312 39.0922432,9.5474453 38.8987261,9.45068056 L20.2741875,0.1378125 L20.2741875,0.1378125 C19.905375,-0.04725 19.469625,-0.04725 19.0995,0.1378125 L3.1011696,8.13815822 C2.60720568,8.38517662 2.40701679,8.98586148 2.6540352,9.4798254 C2.75080129,9.67332903 2.90771305,9.83023153 3.10122239,9.9269862 L21.8652864,19.3090182 C22.1468139,19.4497819 22.4781861,19.4497819 22.7597136,19.3090182 Z"></path>
+                          <path d="M23.625,22.429159 L23.625,39.8805372 C23.625,40.4328219 24.0727153,40.8805372 24.625,40.8805372 C24.7802551,40.8805372 24.9333778,40.8443874 25.0722402,40.7749511 L41.2741875,32.673375 L41.2741875,32.673375 C41.719125,32.4515625 42,31.9974375 42,31.5 L42,14.241659 C42,13.6893742 41.5522847,13.241659 41,13.241659 C40.8447549,13.241659 40.6916418,13.2778041 40.5527864,13.3472318 L24.1777864,21.5347318 C23.8390024,21.7041238 23.625,22.0503869 23.625,22.429159 Z" opacity="0.7"></path>
+                          <path d="M20.4472136,21.5347318 L1.4472136,12.0347318 C0.953235098,11.7877425 0.352562058,11.9879669 0.105572809,12.4819454 C0.0361450918,12.6208008 6.47121774e-16,12.7739139 0,12.929159 L0,30.1875 L0,30.1875 C0,30.6849375 0.280875,31.1390625 0.7258125,31.3621875 L19.5528096,40.7750766 C20.0467945,41.0220531 20.6474623,40.8218132 20.8944388,40.3278283 C20.963859,40.1889789 21,40.0358742 21,39.8806379 L21,22.429159 C21,22.0503869 20.7859976,21.7041238 20.4472136,21.5347318 Z" opacity="0.7"></path>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <h2 class="text-white up mb-0">Free Internet access with <br> RelocateJobs</h2>
+              <a href="{% url 'pricing' %}" class="btn btn-outline-white btn-lg mt-3 up btn-round">Join Today</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <section class="my-5 py-5">
+    <div class="container">
+      <div class="row">
+        <div class="row justify-content-center text-center my-sm-5">
+          <div class="col-lg-6">
+            <h2 class="text-dark mb-0">Available on almost</h2>
+            <h2 class="text-primary text-gradient">All devices</h2>
+            <p class="lead">RelocateJobs proxies work on any device with any internet access.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <div class="text-center">
+            <div class="row justify-content-center">
+              <div class="col-lg-2 col-4">
+                <img width="96" height="96" src="{% static 'img/home/icons8-windows-96.png' %}" class="img-fluid" alt="windows-10"/>
+              </div>
+              <div class="col-lg-2 col-4">
+                <img width="96" height="96" src="{% static 'img/home/icons8-linux-96.png' %}" class="img-fluid" alt="linux--v1"/>
+              </div>
+              <div class="col-lg-2 col-4">
+                <img width="96" height="96" src="{% static 'img/home/icons8-mac-logo-96.png' %}" class="img-fluid" alt="mac-logo"/>
+              </div>
+              <div class="col-lg-2 col-4">
+                <img width="96" height="96" src="{% static 'img/home/icons8-android-os-96.png' %}" class="img-fluid" alt="android-os"/>
+              </div>
+              <div class="col-lg-2 col-4">
+                <img width="90" height="90" src="{% static 'img/home/icons8-ios-logo-100.png' %}" class="img-fluid" alt="ios-logo"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-sm-8 mt-3">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="position-sticky pb-lg-5 pb-3 mt-lg-0 mt-5 ps-2" style="top: 100px">
+            <h3>How to use?</h3>
+            <h6 class="text-secondary font-weight-normal pe-3">Simple! You just need to subscribe and follow the guideline in the video related to your device.</h6>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row mt-3">
+            <div class="col-md-4 mt-md-0 mt-3">
+              <a href="javascript:;">
+                <div class="card shadow-lg move-on-hover min-height-160 min-height-160">
+                  <div class="position-absolute top-0 end-0 p-2 z-index-1">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <circle fill="#1F2937" cx="12" cy="12" r="12"></circle>
+                        <g transform="translate(7.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <path d="M5,0 C3.16666667,0 1.66666667,1.5 1.66666667,3.33333333 L1.66666667,4.58333333 C0.666666667,5.5 0,6.83333333 0,8.33333333 C0,11.0833333 2.25,13.3333333 5,13.3333333 C7.75,13.3333333 10,11.0833333 10,8.33333333 C10,6.83333333 9.33333333,5.5 8.33333333,4.58333333 L8.33333333,3.33333333 C8.33333333,1.5 6.83333333,0 5,0 Z M5.83333333,8.91666667 L5.83333333,10.8333333 L4.16666667,10.8333333 L4.16666667,8.91666667 C3.66666667,8.66666667 3.33333333,8.08333333 3.33333333,7.5 C3.33333333,6.58333333 4.08333333,5.83333333 5,5.83333333 C5.91666667,5.83333333 6.66666667,6.58333333 6.66666667,7.5 C6.66666667,8.08333333 6.33333333,8.66666667 5.83333333,8.91666667 Z M6.66666667,3.66666667 C6.16666667,3.41666667 5.58333333,3.33333333 5,3.33333333 C4.41666667,3.33333333 3.83333333,3.41666667 3.33333333,3.66666667 L3.33333333,3.33333333 C3.33333333,2.41666667 4.08333333,1.66666667 5,1.66666667 C5.91666667,1.66666667 6.66666667,2.41666667 6.66666667,3.33333333 L6.66666667,3.66666667 Z"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="mt-2 ms-2">
+                  <h6 class="mb-0">Andriod</h6>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 mt-md-0 mt-4">
+              <a href="javascript:;">
+                <div class="card shadow-lg move-on-hover min-height-160 min-height-160">
+                  <div class="position-absolute top-0 end-0 p-2 z-index-1">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <circle fill="#1F2937" cx="12" cy="12" r="12"></circle>
+                        <g transform="translate(7.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <path d="M5,0 C3.16666667,0 1.66666667,1.5 1.66666667,3.33333333 L1.66666667,4.58333333 C0.666666667,5.5 0,6.83333333 0,8.33333333 C0,11.0833333 2.25,13.3333333 5,13.3333333 C7.75,13.3333333 10,11.0833333 10,8.33333333 C10,6.83333333 9.33333333,5.5 8.33333333,4.58333333 L8.33333333,3.33333333 C8.33333333,1.5 6.83333333,0 5,0 Z M5.83333333,8.91666667 L5.83333333,10.8333333 L4.16666667,10.8333333 L4.16666667,8.91666667 C3.66666667,8.66666667 3.33333333,8.08333333 3.33333333,7.5 C3.33333333,6.58333333 4.08333333,5.83333333 5,5.83333333 C5.91666667,5.83333333 6.66666667,6.58333333 6.66666667,7.5 C6.66666667,8.08333333 6.33333333,8.66666667 5.83333333,8.91666667 Z M6.66666667,3.66666667 C6.16666667,3.41666667 5.58333333,3.33333333 5,3.33333333 C4.41666667,3.33333333 3.83333333,3.41666667 3.33333333,3.66666667 L3.33333333,3.33333333 C3.33333333,2.41666667 4.08333333,1.66666667 5,1.66666667 C5.91666667,1.66666667 6.66666667,2.41666667 6.66666667,3.33333333 L6.66666667,3.66666667 Z"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="mt-2 ms-2">
+                  <h6 class="mb-0">IOS</h6>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 mt-md-0 mt-4">
+              <a href="javascript:;">
+                <div class="card shadow-lg move-on-hover min-height-160 min-height-160">
+                  <div class="position-absolute top-0 end-0 p-2 z-index-1">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <circle fill="#1F2937" cx="12" cy="12" r="12"></circle>
+                        <g transform="translate(7.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <path d="M5,0 C3.16666667,0 1.66666667,1.5 1.66666667,3.33333333 L1.66666667,4.58333333 C0.666666667,5.5 0,6.83333333 0,8.33333333 C0,11.0833333 2.25,13.3333333 5,13.3333333 C7.75,13.3333333 10,11.0833333 10,8.33333333 C10,6.83333333 9.33333333,5.5 8.33333333,4.58333333 L8.33333333,3.33333333 C8.33333333,1.5 6.83333333,0 5,0 Z M5.83333333,8.91666667 L5.83333333,10.8333333 L4.16666667,10.8333333 L4.16666667,8.91666667 C3.66666667,8.66666667 3.33333333,8.08333333 3.33333333,7.5 C3.33333333,6.58333333 4.08333333,5.83333333 5,5.83333333 C5.91666667,5.83333333 6.66666667,6.58333333 6.66666667,7.5 C6.66666667,8.08333333 6.33333333,8.66666667 5.83333333,8.91666667 Z M6.66666667,3.66666667 C6.16666667,3.41666667 5.58333333,3.33333333 5,3.33333333 C4.41666667,3.33333333 3.83333333,3.41666667 3.33333333,3.66666667 L3.33333333,3.33333333 C3.33333333,2.41666667 4.08333333,1.66666667 5,1.66666667 C5.91666667,1.66666667 6.66666667,2.41666667 6.66666667,3.33333333 L6.66666667,3.66666667 Z"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="mt-2 ms-2">
+                  <h6 class="mb-0">Windows</h6>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4 mt-md-0 mt-3">
+              <a href="javascript:;">
+                <div class="card shadow-lg move-on-hover min-height-160 min-height-160">
+                  <div class="position-absolute top-0 end-0 p-2 z-index-1">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <circle fill="#1F2937" cx="12" cy="12" r="12"></circle>
+                        <g transform="translate(7.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <path d="M5,0 C3.16666667,0 1.66666667,1.5 1.66666667,3.33333333 L1.66666667,4.58333333 C0.666666667,5.5 0,6.83333333 0,8.33333333 C0,11.0833333 2.25,13.3333333 5,13.3333333 C7.75,13.3333333 10,11.0833333 10,8.33333333 C10,6.83333333 9.33333333,5.5 8.33333333,4.58333333 L8.33333333,3.33333333 C8.33333333,1.5 6.83333333,0 5,0 Z M5.83333333,8.91666667 L5.83333333,10.8333333 L4.16666667,10.8333333 L4.16666667,8.91666667 C3.66666667,8.66666667 3.33333333,8.08333333 3.33333333,7.5 C3.33333333,6.58333333 4.08333333,5.83333333 5,5.83333333 C5.91666667,5.83333333 6.66666667,6.58333333 6.66666667,7.5 C6.66666667,8.08333333 6.33333333,8.66666667 5.83333333,8.91666667 Z M6.66666667,3.66666667 C6.16666667,3.41666667 5.58333333,3.33333333 5,3.33333333 C4.41666667,3.33333333 3.83333333,3.41666667 3.33333333,3.66666667 L3.33333333,3.33333333 C3.33333333,2.41666667 4.08333333,1.66666667 5,1.66666667 C5.91666667,1.66666667 6.66666667,2.41666667 6.66666667,3.33333333 L6.66666667,3.66666667 Z"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="mt-2 ms-2">
+                  <h6 class="mb-0">Mac</h6>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 mt-md-0 mt-4">
+              <a href="javascript:;">
+                <div class="card shadow-lg move-on-hover min-height-160 min-height-160">
+                  <div class="position-absolute top-0 end-0 p-2 z-index-1">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <circle fill="#1F2937" cx="12" cy="12" r="12"></circle>
+                        <g transform="translate(7.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <path d="M5,0 C3.16666667,0 1.66666667,1.5 1.66666667,3.33333333 L1.66666667,4.58333333 C0.666666667,5.5 0,6.83333333 0,8.33333333 C0,11.0833333 2.25,13.3333333 5,13.3333333 C7.75,13.3333333 10,11.0833333 10,8.33333333 C10,6.83333333 9.33333333,5.5 8.33333333,4.58333333 L8.33333333,3.33333333 C8.33333333,1.5 6.83333333,0 5,0 Z M5.83333333,8.91666667 L5.83333333,10.8333333 L4.16666667,10.8333333 L4.16666667,8.91666667 C3.66666667,8.66666667 3.33333333,8.08333333 3.33333333,7.5 C3.33333333,6.58333333 4.08333333,5.83333333 5,5.83333333 C5.91666667,5.83333333 6.66666667,6.58333333 6.66666667,7.5 C6.66666667,8.08333333 6.33333333,8.66666667 5.83333333,8.91666667 Z M6.66666667,3.66666667 C6.16666667,3.41666667 5.58333333,3.33333333 5,3.33333333 C4.41666667,3.33333333 3.83333333,3.41666667 3.33333333,3.66666667 L3.33333333,3.33333333 C3.33333333,2.41666667 4.08333333,1.66666667 5,1.66666667 C5.91666667,1.66666667 6.66666667,2.41666667 6.66666667,3.33333333 L6.66666667,3.66666667 Z"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="mt-2 ms-2">
+                  <h6 class="mb-0">Linux</h6>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- -------- START Content Presentation Docs ------- -->
+  <div class="container mt-sm-5">
+    <div class="page-header min-vh-50 my-sm-3 mb-3 border-radius-xl" style="background-image: url('{% static 'img/home/trc20.jpg' %}')">
+      <span class="mask bg-gradient-primary"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ms-lg-5 my-4">
+            <h4 class="text-white mb-0">Plans for every level of ambition on</h4>
+            <h1 class="text-white">Secure Payment System</h1>
+            <p class="lead text-white opacity-8">
+              TRC20 payment is a form of digital transaction based on the TRON blockchain platform. As a token standard, TRC20 allows for the seamless transfer of digital assets within the TRON ecosystem, enabling secure and efficient payment processing.
+            </p>
+            <a href="{% url 'pricing' %}" class="text-white icon-move-right">
+              Pricing
+              <i class="fas fa-arrow-right text-sm ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="info-horizontal bg-gradient-primary border-radius-xl p-5">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-shield" viewBox="0 0 43 43">
+              <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+            </svg>
+          </div>
+          <div class="description ps-5">
+            <h5 class="text-white">Confidentiality of user information</h5>
+            <p class="text-white">You don't have to disclose your personal details such as name, address, or credit card information.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 px-lg-1 mt-lg-0 mt-4">
+        <div class="info-horizontal bg-gray-100 border-radius-xl p-5">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-globe" viewBox="0 0 45 45">
+              <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+            </svg>
+          </div>
+          <div class="description ps-5">
+            <h5>For all individuals</h5>
+            <p>Regardless of your location or financial status, it provides a borderless and inclusive solution, enabling anyone with an internet connection to participate in the global economy.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-lg-0 mt-4">
+        <div class="info-horizontal bg-gray-100 border-radius-xl p-5">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-bank" viewBox="0 0 45 45">
+              <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+            </svg>
+          </div>
+          <div class="description ps-5">
+            <h5>Out of control of authorities</h5>
+            <p>This feature enhances financial autonomy, reducing the potential for censorship or manipulation of transactions by governments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -------- END Content Presentation Docs ------- -->
+  <section class="py-sm-7" id="download-soft-ui">
+    <div class="bg-gradient-dark position-relative m-3 border-radius-xl overflow-hidden">
+      <img src="{% static 'img/home/waves-white.svg' %}" alt="pattern-lines" class="position-absolute start-0 top-md-0 w-100 opacity-6">
+      <div class="container py-7 postion-relative z-index-2 position-relative">
+        <div class="row">
+          <div class="col-md-7 mx-auto text-center">
+            <h3 class="text-white mb-0">Do you like to take profit?</h3>
+            <h3 class="text-primary text-gradient mb-4">Join our Affiliate Network</h3>
+            <p class="text-white mb-5">Sign up for our Affiliate Marketing Program today and start earning that well-deserved <b class="text-primary">30% commission</b>. Simply share your <b>personal affiliate code</b> on your <b>social media</b> profiles and let your network experience the exceptional products and services we offer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- START Section Content W/ 2 images aside of icon title description -->
+  <section class="pt-lg-7 pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-8 order-2 order-md-2 order-lg-1">
+          <div class="position-relative ms-lg-5 mb-0 mb-md-7 mb-lg-0 d-none d-md-block d-lg-block d-xl-block h-75">
+            <div class="bg-gradient-primary w-100 h-100 border-radius-xl position-absolute d-lg-block d-none"></div>
+            <img src="{% static 'img/home/social.jpg' %}" class="w-100 border-radius-xl mt-6 ms-lg-5 position-relative z-index-5" alt="">
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-12 ms-auto order-1 order-md-1 order-lg-1">
+          <div class="p-3 pt-0">
+            <div class="icon icon-shape bg-gradient-primary rounded-circle shadow row align-items-center mb-4">
+              <svg style="color:white" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+              </svg>
+            </div>
+            <h4 class="text-gradient text-primary mb-3">RelocateJobs on social media</h4>
+            <p>Take a moment to visit our company's social media pages and hit that "follow" button. Join our growing community and never miss out on the latest news, offers, and events. We promise to deliver engaging content, provide excellent customer service, and make your social media experience with us a memorable one. Thank you for being a valued member of our online family. We can't wait to connect with you!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END Section Content -->
+  <!-- -------   START PRE-FOOTER 2 - simple social line w/ title & 3 buttons    -------- -->
+  <div class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 ms-auto">
+          <h4 class="mb-1">Thank you for your support!</h4>
+          <p class="lead mb-0">We deliver the best.</p>
+        </div>
+        <div class="col-lg-5 me-lg-auto my-lg-auto text-lg-end mt-5">
+          <a href="https://www.instagram.com/RelocateJobs_vpn/" class="btn btn-primary mb-2 me-2" target="_blank">
+            <i class="fab fa-instagram me-1"></i> Instagram
+          </a>
+          <a href="https://t.me/RelocateJobs_vpn_telegram" class="btn btn-info mb-2 me-2" target="_blank">
+            <i class="fab fa-telegram me-1"></i> Telegram
+          </a>
+          <a href="https://www.linkedin.com/company/RelocateJobs-vpn/" class="btn btn-dark mb-2 me-2" target="_blank">
+            <i class="fab fa-linkedin me-1"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+
+  {% block javascripts %}
+  
+  <script type="text/javascript">
+  
+    if (document.getElementById('state1')) {
+      const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+      if (!countUp.error) {
+        countUp.start();
+      } else {
+        console.error(countUp.error);
+      }
+    }
+    if (document.getElementById('state2')) {
+      const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+      if (!countUp1.error) {
+        countUp1.start();
+      } else {
+        console.error(countUp1.error);
+      }
+    }
+    if (document.getElementById('state3')) {
+      const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+      if (!countUp2.error) {
+        countUp2.start();
+      } else {
+        console.error(countUp2.error);
+      };
+    }
+  </script>
+  
+  {% endblock javascripts %}

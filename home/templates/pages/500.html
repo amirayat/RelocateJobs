@@ -1,0 +1,35 @@
+{% extends 'layouts/base-design.html' %}
+{% load static %}
+
+{% block title %} 500 {% endblock title %}
+
+{% block body %} class="contact" {% endblock body %}
+
+{% block content %}
+
+<!-- -------- START HEADER 8 w/ card over right bg image ------- -->
+<header>
+  <div class="page-header min-vh-85">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center flex-column">
+          <div class="card d-flex blur justify-content-center p-4 shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+            <div class="text-center">
+              <h3 class="text-gradient text-primary">We are under maintenance!</h3>
+              <p class="mb-0">
+                Please be patient and try again later.
+              </p>
+              <div class="row my-3">
+                <div class="col-md-12 text-center">
+                  <a href="{% url 'index' %}" class="btn btn-primary btn-lg mb-3 mb-sm-0">Home</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% endblock content %}
