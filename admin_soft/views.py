@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, PasswordResetConfirmView
 from admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, UserPasswordChangeForm
 from django.contrib.auth import logout
@@ -6,6 +7,7 @@ from django.contrib.auth import logout
 # Create your views here.
 
 # Pages
+@login_required()
 def index(request):
   return render(request, 'admin/index.html', { 'segment': 'index' })
 
