@@ -37,14 +37,14 @@
 
 <body class="g-sidenav-show bg-gray-100">
 
-    {% include "includes/sidebar.html" %}
+    {% include "includes/sidebar-dashboard.html" %}
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        {% include "includes/navigation.html" %} 
+        {% include "includes/navigation-dashboard.html" %} 
         {% block content %}{% endblock content %}
     </main>
 
 <!--   Core JS Files   -->
-{% include 'includes/scripts.html' %}
+{% include 'includes/scripts-dashboard.html' %}
 
 
 {% block scripts %}{% endblock scripts %}
