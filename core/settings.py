@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "scraper.apps.ScraperConfig",
     "llm.apps.LlmConfig",
     "home.apps.HomeConfig",
+    "contactus.apps.ContactusConfig",
+    "pricing.apps.PricingConfig",
 ]
 
 MIDDLEWARE = [
@@ -61,7 +63,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "core.urls"
 
-HOME_TEMPLATES = os.path.join(BASE_DIR, 'admin_soft', 'templates')
+HOME_TEMPLATES = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
     {
@@ -84,6 +86,7 @@ TEMPLATES = [
                 "job.context_processors.recent_9_days_jobs",
                 "job.context_processors.recent_9_days_relocations",
                 "job.context_processors.recent_9_days_upvotes",
+                "pricing.context_processors.wallet_address",
             ],
         },
     },
