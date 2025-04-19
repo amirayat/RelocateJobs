@@ -1,6 +1,7 @@
 import random
 from decimal import Decimal
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from .models import SiteWalletAddress, Deposite
 
@@ -9,6 +10,7 @@ def pricing(request):
     return render(request, 'pricing.html')
 
 
+@login_required()
 def subscribe(request):
     deposite = Deposite.objects.filter(user= request.user,
                                        is_accepted=False).last()
