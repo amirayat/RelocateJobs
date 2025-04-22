@@ -1,7 +1,7 @@
 {% extends 'layouts/base-design.html' %}
 {% load static %}
 
-{% block title %} RelocateJobs-Subscribe {% endblock title %}
+{% block title %} RelocateJobs-Donate {% endblock title %}
 
 {% block body %} class="contact-us" {% endblock body %}
 
@@ -15,19 +15,22 @@
         <div class="col-lg-12 d-flex justify-content-center flex-column">
           <div class="card d-flex blur justify-content-center p-4 shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
             <div class="text-center">
-              <h3 class="text-gradient text-dark">Subscribe</h3>
+              <h3 class="text-gradient text-dark">Donate</h3>
               <p class="mb-0">
-                To unlock full dashboard access, please send exactly <b>${{ amount }}</b> to the TRC20 wallet address provided. Once the transaction is confirmed, your dashboard access will be fully activated.
+                RelocateJobs is a free tool built to help job seekers find relocation-friendly and visa-sponsored opportunities. If you’ve found value in what we do, consider supporting us with a small donation.
+                Your contribution helps keep the site running, improves features, and brings us closer to helping more people relocate for a better future.
+                <br>
+                <b>Every little bit counts. Thank you!</b>
               </p>
               <div class="d-flex align-items-center justify-content-center my-3">
                 <div class="col-lg-2 col-4">
-                  <img width="180" height="180" src="{% static 'img/qr.png' %}" class="img-fluid"
+                  <img width="180" height="180" src="{% static 'img/qr.jpeg' %}" class="img-fluid"
                     alt="trc20-wallet-qr-code" />
                 </div>
               </div>
               <div class="d-flex align-items-center justify-content-center">
                 <div class="col-md-6 ps-md-2">
-                  <P><b>{{ wallet_address }}</b></P>
+                  <P><b>TF7q8C5X3EXPqZV89b2CoHpUxa2SApTgoY</b></P>
                 </div>
               </div>
             </div>
