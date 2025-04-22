@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "scraper.apps.ScraperConfig",
     "llm.apps.LlmConfig",
     "home.apps.HomeConfig",
-    "contactus.apps.ContactusConfig",
     "pricing.apps.PricingConfig",
 ]
 
