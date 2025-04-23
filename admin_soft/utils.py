@@ -1,39 +1,26 @@
-import datetime
 import json
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from collections import OrderedDict
+
+from django.utils import translation, timezone
+from django.db.models.functions import TruncMonth, TruncDay
+from django.db.models import Count
 from django.template import Context
 from django.utils import translation
-
-try:
-    from django.apps.registry import apps
-except ImportError:
-    try:
-        from django.apps import apps  # Fix Django 1.7 import issue
-    except ImportError:
-        pass
+from django.apps.registry import apps
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
-
-try:
-    from django.core.urlresolvers import reverse, resolve, NoReverseMatch
-except ImportError:  # Django 1.11
-    from django.urls import reverse, resolve, NoReverseMatch
-
+from django.urls import reverse, resolve, NoReverseMatch
 from django.contrib.admin import AdminSite
 from django.utils.text import capfirst
 from django.contrib import messages
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
-try:
-    from django.utils.translation import ugettext_lazy as _
-except ImportError:
-    from django.utils.translation import gettext_lazy as _  # Django 4.0.0 and more
-
-try:
-    from collections import OrderedDict
-except ImportError:
-    from ordereddict import OrderedDict  # Python 2.6
+from job.models import Job
 
 
 default_apps_icon = {
@@ -466,3 +453,72 @@ def user_is_authenticated(user):
         return user.is_authenticated
     else:
         return user.is_authenticated()
+
+
+def get_list_week_days():
+    today = timezone.now()
+    week_days = [
+        "Sat",
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+    ]
+    current_day = today.strftime("%A")[:3]
+    index = week_days.index(current_day)
+    return week_days[index+1:] + week_days[:index+1]
+
+
+def get_list_year_months():
+    today = timezone.now()
+    year_months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ]
+    current_day = today.strftime("%b")
+    index = year_months.index(current_day)
+    return year_months[index+1:] + year_months[:index+1]
+
+
+def get_chart():
+    """
+    get chart of jobs
+    """
+    end_date = datetime.now()
+    delta_month = end_date - relativedelta(months=9)
+    delta_day = end_date - relativedelta(days=9)
+    start_day = delta_day.replace(hour=0, minute=0, second=0, microsecond=0)
+    start_month = delta_month.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    
+    daily_job_counts = Job.objects.filter(gathered_at__gte=start_day)\
+        .annotate(day=TruncDay('gathered_at')).values('day')\
+            .annotate(count=Count('id')).order_by('day').values_list('count', flat=True)
+    monthly_job_counts = Job.objects.filter(gathered_at__gte=start_month)\
+        .annotate(month=TruncMonth('gathered_at')).values('month')\
+            .annotate(count=Count('id')).order_by('month').values_list('count', flat=True)
+    monthly_reloc_counts = monthly_job_counts.filter(relocation = True)
+
+    daily_jobs_sum_keys = get_list_week_days()
+    monthly_reloc_sum_keys = get_list_year_months()[-9:]
+
+    daily_job_counts = list(daily_job_counts)[-7:]
+    monthly_reloc_counts = list(monthly_reloc_counts)[-9:]
+    monthly_job_counts = list(monthly_job_counts)[-9:]
+
+    return (daily_jobs_sum_keys,
+            [0] * (7 - len(daily_job_counts)) + daily_job_counts,
+            monthly_reloc_sum_keys,
+            [0] * (7 - len(monthly_reloc_counts)) + monthly_reloc_counts,
+            [0] * (7 - len(monthly_job_counts)) + monthly_job_counts)
