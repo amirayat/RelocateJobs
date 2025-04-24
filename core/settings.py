@@ -98,8 +98,8 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_name',                      
-        'USER': 'db_user',
+        'NAME': 'relocatejobs',                      
+        'USER': 'postgres',
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': 'relocatejobs.clwgqw2ush44.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
