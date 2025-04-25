@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "llm.apps.LlmConfig",
     "home.apps.HomeConfig",
     "donate.apps.DonateConfig",
+    "comment.apps.CommentConfig",
 ]
 
 MIDDLEWARE = [
