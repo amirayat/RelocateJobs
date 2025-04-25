@@ -112,10 +112,10 @@ def check_linkedin_jobs():
             # job offers relocation
             if detect(main_text) == 'en' and any(word in main_text for word in relocation_words) and has_visa_sponsorship(main_text):
                 job.relocation = True
+                # add job to opensearch
+                relocate_index.add_job(job_id, main_text)
             # save the job
             job.checked = True
             job.save()
-            # add job to opensearch
-            relocate_index.add_job(job_id, main_text)
         except Exception as e:
             print(f"Failed to click use: {e}")
