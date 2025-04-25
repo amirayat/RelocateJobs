@@ -16,6 +16,10 @@ class JobAdmin(admin.ModelAdmin):
     search_fields = (
         'job_id',
     )
+    list_filter = (
+        'checked',
+        'relocation',
+    )
 
 class LocationAdmin(admin.ModelAdmin):
     list_per_page = 10
