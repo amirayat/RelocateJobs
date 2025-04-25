@@ -118,4 +118,4 @@ def check_linkedin_jobs():
             job.checked = True
             job.save()
         except Exception as e:
-            print(f"Failed to click use: {e}")
+            print(f"Failed to find element: {e}")
