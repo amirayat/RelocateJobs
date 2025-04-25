@@ -158,6 +158,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # https://pypi.org/project/django-crontab/
 CRONJOBS = [
-    ('0 1-23/2 * * * timeout 3500', 'scraper.cron.search_linkedin_jobs'), # 1am, 3am, 5am, 7am, 9am, 11am, 1pm, 3pm, 5pm, 7pm, 9pm, and 11pm
-    ('0 */2 * * * timeout 3500', 'scraper.cron.check_linkedin_jobs'), # 12am, 2am, 4am, 6am, 8am, 10am, 12pm, 2pm, 4pm, 6pm, 8pm, and 10pm
+    ('0 1-23/2 * * * timeout 3500', 'scraper.cron.search_linkedin_jobs', '>> /tmp/search_linkedin_jobs.log'), # 1am, 3am, 5am, 7am, 9am, 11am, 1pm, 3pm, 5pm, 7pm, 9pm, and 11pm
+    ('0 */2 * * * timeout 3500', 'scraper.cron.check_linkedin_jobs', '>> /tmp/check_linkedin_jobs.log'), # 12am, 2am, 4am, 6am, 8am, 10am, 12pm, 2pm, 4pm, 6pm, 8pm, and 10pm
 ]
