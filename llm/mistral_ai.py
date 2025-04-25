@@ -1,4 +1,3 @@
-import time
 import requests
 
 from .models import LLM
@@ -37,7 +36,6 @@ def has_visa_sponsorship(job_description):
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.1
     }
-    time.sleep(1)
     response = requests.post(url, json=data, headers=headers)
     result = response.json()["choices"][0]["message"]["content"].strip()
 
