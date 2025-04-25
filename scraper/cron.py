@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from scraper.models import Linkedin
 from job.models import Location, Search, Job
 from llm.mistral_ai import has_visa_sponsorship
+from opensearch.db import RelocateJobsIndex
 
 
 # Set up Chrome
@@ -96,9 +97,12 @@ def check_linkedin_jobs():
     relocation_words = ['visa', 'relocat', 'immigra', 'sponsor', 'permit', 'authoriz',
                         'employment pass', 'blue card', 'move', 'moving', 'transfer', 'mobil'
                         'housing', 'accommodation', 'mobility', 'international', 'worldwide']
+    # initiat opensearch connection
+    relocate_index = RelocateJobsIndex()
     
     for job in jobs_to_check:
-        job_url = f'https://www.linkedin.com/jobs/view/{job.job_id}/'
+        job_id = job.job_id
+        job_url = f'https://www.linkedin.com/jobs/view/{job_id}/'
         driver.get(job_url)
         try:
             # Wait until a specific element is present
@@ -111,5 +115,7 @@ def check_linkedin_jobs():
             # save the job
             job.checked = True
             job.save()
+            # add job to opensearch
+            relocate_index.add_job(job_id, main_text)
         except Exception as e:
             print(f"Failed to click use: {e}")
