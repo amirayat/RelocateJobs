@@ -1,19 +1,12 @@
 import os
 import sys
 import time
-import logging
 import django
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-
-logging.basicConfig(
-    filename='scraper/search_job.log',
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s:%(message)s'
-)
 
 # Get the path to the project root (one level up from 'scraper')
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -100,7 +93,7 @@ def search_linkedin_jobs():
                                 button.click()
                                 time.sleep(0.5)
                             except Exception as e:
-                                logging.warning(f"Failed to click use: {e}")
+                                print(f"Failed to click use: {e}")
 
 
 if __name__ == "__main__":

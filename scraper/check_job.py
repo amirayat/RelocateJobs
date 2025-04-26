@@ -2,20 +2,12 @@ import os
 import sys
 import time
 import django
-import logging
 from langdetect import detect
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-
-logging.basicConfig(
-    filename='scraper/check_job.log',
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s:%(message)s'
-)
 
 
 # Get the path to the project root (one level up from 'scraper')
@@ -97,7 +89,7 @@ def check_linkedin_jobs():
                 job.checked = True
                 job.save()
             except Exception as e:
-                logging.warning(f"Failed to find element: {e}")
+                print(f"Failed to find element: {e}")
 
 
 if __name__ == "__main__":
