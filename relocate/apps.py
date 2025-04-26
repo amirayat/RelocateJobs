@@ -4,4 +4,4 @@ from django.apps import AppConfig
 class RelocateConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'relocate'
-    icon = 'fa fa-briefcase'
+    icon = 'fa fa-globe'
