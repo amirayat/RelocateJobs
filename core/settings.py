@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "donate.apps.DonateConfig",
     "comment.apps.CommentConfig",
+    "relocate.apps.RelocateConfig",
 ]
 
 MIDDLEWARE = [
