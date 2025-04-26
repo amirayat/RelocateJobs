@@ -1,12 +1,11 @@
+import os
 import time
 import logging
+import django
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-
-from scraper.models import Linkedin
-from job.models import Location, Search, Job
 
 
 logging.basicConfig(
@@ -14,6 +13,16 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s %(levelname)s:%(message)s'
 )
+
+
+# Set the settings module 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+# Setup Django
+django.setup()
+
+
+from scraper.models import Linkedin
+from job.models import Location, Search, Job
 
 
 # Set up Chrome

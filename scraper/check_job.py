@@ -1,4 +1,6 @@
+import os
 import time
+import django
 import logging
 from langdetect import detect
 from selenium import webdriver
@@ -7,17 +9,24 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from scraper.models import Linkedin
-from job.models import Job
-from relocate.models import Relocate
-from llm.mistral_ai import has_visa_sponsorship
-
 
 logging.basicConfig(
     filename='/var/log/check_job.log',
     level=logging.INFO,
     format='%(asctime)s %(levelname)s:%(message)s'
 )
+
+
+# Set the settings module 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+# Setup Django
+django.setup()
+
+
+from scraper.models import Linkedin
+from job.models import Job
+from relocate.models import Relocate
+from llm.mistral_ai import has_visa_sponsorship
 
 
 # Set up Chrome
