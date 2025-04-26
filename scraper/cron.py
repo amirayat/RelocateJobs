@@ -9,8 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from scraper.models import Linkedin
 from job.models import Location, Search, Job
+from relocate.models import Relocate
 from llm.mistral_ai import has_visa_sponsorship
-from opensearch.db import RelocateJobsIndex
 
 
 # Set up Chrome
@@ -97,8 +97,6 @@ def check_linkedin_jobs():
     relocation_words = ['visa', 'relocat', 'immigra', 'sponsor', 'permit', 'authoriz',
                         'employment pass', 'blue card', 'move', 'moving', 'transfer', 'mobil'
                         'housing', 'accommodation', 'mobility', 'international', 'worldwide']
-    # initiat opensearch connection
-    relocate_index = RelocateJobsIndex()
     
     for job in jobs_to_check:
         job_id = job.job_id
@@ -112,8 +110,8 @@ def check_linkedin_jobs():
             # job offers relocation
             if detect(main_text) == 'en' and any(word in main_text for word in relocation_words) and has_visa_sponsorship(main_text):
                 job.relocation = True
-                # add job to opensearch
-                relocate_index.add_job(job_id, main_text)
+                # add job to relocate
+                Relocate.objects.create(job_url=job_url, text=main_text)
             # save the job
             job.checked = True
             job.save()
