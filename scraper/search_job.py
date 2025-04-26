@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import logging
 import django
@@ -9,12 +10,14 @@ from selenium.webdriver.chrome.options import Options
 
 
 logging.basicConfig(
-    filename='/var/log/search_job.log',
+    filename='scraper/search_job.log',
     level=logging.INFO,
     format='%(asctime)s %(levelname)s:%(message)s'
 )
 
-
+# Get the path to the project root (one level up from 'scraper')
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(project_root)
 # Set the settings module 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 # Setup Django

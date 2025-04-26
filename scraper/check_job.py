@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import django
 import logging
@@ -11,12 +12,15 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 logging.basicConfig(
-    filename='/var/log/check_job.log',
+    filename='scraper/check_job.log',
     level=logging.INFO,
     format='%(asctime)s %(levelname)s:%(message)s'
 )
 
 
+# Get the path to the project root (one level up from 'scraper')
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(project_root)
 # Set the settings module 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 # Setup Django
