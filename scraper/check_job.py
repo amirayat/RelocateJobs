@@ -28,8 +28,7 @@ from llm.mistral_ai import has_visa_sponsorship
 # Set up Chrome
 options = Options()
 options.add_argument("--start-maximized")
-options.add_argument("--headless")        # Run in headless mode
-options.add_argument("--force-device-scale-factor=0.25")
+# options.add_argument("--headless")        # Run in headless mode
 options.add_argument("--disable-gpu")     # Optional: avoid some rendering issues
 options.add_argument("--no-sandbox")      # Good for Linux
 options.add_argument("--disable-dev-shm-usage")  # Good for Linux
@@ -78,6 +77,11 @@ def check_linkedin_jobs():
             try:
                 # Wait until a specific element is present
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "main")))
+                # locate and click the "See more" button
+                see_more = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Click to see more description']"))
+                )
+                see_more.click()
                 # Find the <main> element and get its visible text
                 main_text = driver.find_element(By.TAG_NAME, "main").text
                 # job offers relocation
