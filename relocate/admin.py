@@ -7,6 +7,7 @@ class RelocateAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'job_url',
+        'flag',
         'checked',
         'gathered_at',
         'text'
