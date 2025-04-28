@@ -6,10 +6,8 @@ class RelocateAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_display = (
         'id',
-        'job_url',
         'flag',
         'checked',
-        'gathered_at',
         'text'
     )
     search_fields = (
