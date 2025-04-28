@@ -7,5 +7,6 @@ class Relocate(models.Model):
     """
     job_url = models.URLField(unique=True, db_index=True)
     checked = models.BooleanField(default=False)
+    flag = models.BooleanField(default=False)
     gathered_at = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
