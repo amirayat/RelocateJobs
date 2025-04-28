@@ -15,6 +15,7 @@ class RelocateAdmin(admin.ModelAdmin):
     )
     list_filter = (
         'checked',
+        'flag'
     )
 
 admin.site.register(Relocate, RelocateAdmin)
