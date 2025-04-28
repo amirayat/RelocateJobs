@@ -28,7 +28,7 @@ from llm.mistral_ai import has_visa_sponsorship
 # Set up Chrome
 options = Options()
 options.add_argument("--start-maximized")
-# options.add_argument("--headless")        # Run in headless mode
+options.add_argument("--headless")        # Run in headless mode
 options.add_argument("--disable-gpu")     # Optional: avoid some rendering issues
 options.add_argument("--no-sandbox")      # Good for Linux
 options.add_argument("--disable-dev-shm-usage")  # Good for Linux
