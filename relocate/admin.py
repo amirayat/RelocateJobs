@@ -1,5 +1,6 @@
 from django.contrib import admin
 from comment.models import Comment
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from .models import Relocate, UserRelocate
@@ -110,7 +111,7 @@ class FlagFilter(admin.SimpleListFilter):
 class RelocateAdmin(admin.ModelAdmin):
     list_per_page = 10
     fields = (
-        'job_url', 
+        'job_url_clickable',
         'upvotes',
         'text',
     )
@@ -118,6 +119,7 @@ class RelocateAdmin(admin.ModelAdmin):
         'text',
     )
     readonly_fields = (
+        'job_url_clickable',
         'id',
         'job_url',
         'upvotes',
@@ -139,6 +141,10 @@ class RelocateAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
         extra_context['show_save_and_continue'] = False
         return super().change_view(request, object_id, form_url, extra_context)
+    
+    def job_url_clickable(self, obj):
+        return format_html('<a href="{0}" target="_blank">{0}</a>', obj.job_url)
+    job_url_clickable.short_description = 'Job URL'
     
 
 admin.site.register(Relocate, RelocateAdmin)
