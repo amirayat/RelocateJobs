@@ -77,11 +77,14 @@ def check_linkedin_jobs():
             try:
                 # Wait until a specific element is present
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "main")))
-                # locate and click the "See more" button
-                see_more = WebDriverWait(driver, 10).until(
-                    EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Click to see more description']"))
-                )
-                see_more.click()
+                try:
+                    # locate and click the "See more" button
+                    see_more = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Click to see more description']"))
+                    )
+                    see_more.click()
+                except:
+                    pass
                 # Find the <main> element and get its visible text
                 main_text = driver.find_element(By.TAG_NAME, "main").text
                 # job offers relocation
