@@ -8,9 +8,7 @@ class Job(models.Model):
     job_id = models.CharField(max_length=10, unique=True, db_index=True)
     checked = models.BooleanField(default=False)
     relocation = models.BooleanField(default=False)
-    upvote = models.PositiveIntegerField(default=0)
     gathered_at = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=True)
 
 
 class Location(models.Model):

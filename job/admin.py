@@ -9,9 +9,7 @@ class JobAdmin(admin.ModelAdmin):
         'job_id',
         'checked',
         'relocation',
-        'upvote',
         'gathered_at',
-        'active',
     )
     search_fields = (
         'job_id',

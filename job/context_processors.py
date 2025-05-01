@@ -2,6 +2,7 @@ from datetime import timedelta
 from django.db.models import Sum
 from django.utils import timezone
 
+from relocate.models import Relocate
 from .models import Job, Location, Search
 
 
@@ -10,7 +11,7 @@ def processed_jobs(request):
 
 
 def relocation_jobs(request):
-    return {'relocation_jobs': Job.objects.filter(active=True, relocation=True).count()}
+    return {'relocation_jobs': Job.objects.filter(relocation=True).count()}
 
 
 def locations(request):
@@ -40,4 +41,4 @@ def recent_9_days_relocations(request):
                                                             gathered_at__date__gte=nine_days_ago).count()}
 
 def recent_9_days_upvotes(request):
-    return {'recent_9_days_upvotes': Job.objects.filter(gathered_at__date__gte=nine_days_ago).aggregate(sum=Sum('upvote'))['sum'] or 0}
+    return {'recent_9_days_upvotes': Relocate.objects.filter(gathered_at__date__gte=nine_days_ago).aggregate(sum=Sum('upvote'))['sum'] or 0}
