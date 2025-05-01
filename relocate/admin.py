@@ -3,7 +3,6 @@ from django.urls import path, reverse
 from django.contrib import admin
 from comment.models import Comment
 from django.utils.html import format_html
-from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
 
 from .models import Relocate, UserRelocate
