@@ -103,7 +103,7 @@ DATABASES = {
         'NAME': 'relocatejobs',                      
         'USER': 'postgres',
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': 'relocatejobs.clwgqw2ush44.us-east-2.rds.amazonaws.com',
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': '5432',
     }
 }
