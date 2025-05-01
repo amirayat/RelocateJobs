@@ -1,6 +1,8 @@
+from django.urls import path
 from django.contrib import admin
 from comment.models import Comment
 from django.utils.html import format_html
+from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
 
 from .models import Relocate, UserRelocate
@@ -111,6 +113,7 @@ class FlagFilter(admin.SimpleListFilter):
 class RelocateAdmin(admin.ModelAdmin):
     list_per_page = 10
     fields = (
+        'upvote_button',
         'job_url_clickable',
         'upvotes',
         'text',
@@ -119,6 +122,7 @@ class RelocateAdmin(admin.ModelAdmin):
         'text',
     )
     readonly_fields = (
+        'upvote_button',
         'job_url_clickable',
         'id',
         'job_url',
@@ -141,6 +145,28 @@ class RelocateAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
         extra_context['show_save_and_continue'] = False
         return super().change_view(request, object_id, form_url, extra_context)
+    
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('<int:relocate_id>/upvote/', self.admin_site.admin_view(self.process_upvote), name='relocate-upvote'),
+        ]
+        return custom_urls + urls
+    
+    def process_upvote(self, request, relocate_id):
+        relocate = self.get_object(request, relocate_id)
+        relocate.upvotes += 1
+        relocate.save()
+        self.message_user(request, f"Upvoted '{relocate.job_url}'. Total votes: {relocate.upvotes}")
+        return HttpResponseRedirect(request.path)
+
+    def upvote_button(self, obj):
+        return format_html(
+            '<a class="btn btn-outline-gray-600 d-inline-flex align-items-center" '
+            'href="{}"><i class="fa fa-arrow-circle-up"></i>&nbsp; UpVote</a>',
+            f'./{obj.pk}/upvote/'
+        )
+    upvote_button.short_description = "If you have received an interview offer for this role, please click Upvote"
     
     def job_url_clickable(self, obj):
         return format_html('<a href="{0}" target="_blank">{0}</a>', obj.job_url)
