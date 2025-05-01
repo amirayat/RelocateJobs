@@ -41,4 +41,4 @@ def recent_9_days_relocations(request):
                                                             gathered_at__date__gte=nine_days_ago).count()}
 
 def recent_9_days_upvotes(request):
-    return {'recent_9_days_upvotes': Relocate.objects.filter(gathered_at__date__gte=nine_days_ago).aggregate(sum=Sum('upvote'))['sum'] or 0}
+    return {'recent_9_days_upvotes': Relocate.objects.filter(gathered_at__date__gte=nine_days_ago).aggregate(sum=Sum('upvotes'))['sum'] or 0}
