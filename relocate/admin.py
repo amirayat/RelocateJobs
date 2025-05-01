@@ -1,4 +1,5 @@
-from django.urls import path
+from django.shortcuts import redirect
+from django.urls import path, reverse
 from django.contrib import admin
 from comment.models import Comment
 from django.utils.html import format_html
@@ -149,22 +150,23 @@ class RelocateAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            path('<int:relocate_id>/upvote/', self.admin_site.admin_view(self.process_upvote), name='relocate-upvote'),
+            path('<int:id>/upvote/', self.process_upvote, name='upvote_url'),
         ]
         return custom_urls + urls
     
-    def process_upvote(self, request, relocate_id):
-        relocate = self.get_object(request, relocate_id)
+    def process_upvote(self, request, id):
+        relocate = self.get_object(request, id)
         relocate.upvotes += 1
         relocate.save()
-        self.message_user(request, f"Upvoted '{relocate.job_url}'. Total votes: {relocate.upvotes}")
-        return HttpResponseRedirect(request.path)
+        redirect_url = "admin:{}_{}_change".format(self.opts.app_label, self.opts.model_name)
+        return redirect(reverse(redirect_url, args=[id]))
 
     def upvote_button(self, obj):
+        url = reverse('admin:upvote_url', kwargs={'id': obj.id})
         return format_html(
             '<a class="btn btn-outline-gray-600 d-inline-flex align-items-center" '
             'href="{}"><i class="fa fa-arrow-circle-up"></i>&nbsp; UpVote</a>',
-            f'./{obj.pk}/upvote/'
+            url
         )
     upvote_button.short_description = "If you have received an interview offer for this role, please click Upvote"
     
