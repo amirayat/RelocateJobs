@@ -6,7 +6,7 @@ class Comment(models.Model):
     """
     Comment under a Job post, with support for likes/dislikes and replies.
     """
-    job = models.ForeignKey('job.Job', on_delete=models.CASCADE, related_name='comments')
+    job = models.ForeignKey('relocate.Relocate', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies')
     content = models.TextField()
