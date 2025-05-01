@@ -19,7 +19,7 @@ class UserRelocate(models.Model):
     """
     relocate = models.ForeignKey(Relocate, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    checked = models.BooleanField(default=False)
+    checked = models.BooleanField(default=True)
     flag = models.BooleanField(default=False)
-    note = models.TextField()
+    note = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
