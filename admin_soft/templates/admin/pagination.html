@@ -10,9 +10,9 @@
             <ul class="pagination mb-0">
                 <li class="page-item">
                     {% if cl.page_num > 1 %}
-                        <a class="page-link" href="?p={{ cl.page_num|neg_num:1 }}">Previous</a>
+                        <a class="page-link" href="?p={{ cl.page_num|neg_num:1 }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     {% else %}
-                        <span class="page-link">Previous</span>
+                        <span class="page-link"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
                     {% endif %}
                 </li>
                 {% if pagination_required %}
@@ -25,9 +25,9 @@
                 {% endif %}
                 <li class="page-item">
                     {% if cl.page_num < cl.paginator.num_pages %}
-                        <a class="page-link" href="?p={{ cl.page_num|sum_number:1 }}">Next</a>
+                        <a class="page-link" href="?p={{ cl.page_num|sum_number:1 }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     {% else %}
-                        <span class="page-link">Next</span>
+                        <span class="page-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                     {% endif %}
                 </li>
                 {% if show_all_url %}
