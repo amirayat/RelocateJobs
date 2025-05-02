@@ -5,6 +5,7 @@ from django.contrib import admin
 from comment.models import Comment
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from django.contrib.postgres.search import SearchQuery
 
 from .models import Relocate, UserRelocate
 
@@ -137,6 +138,19 @@ class RelocateAdmin(admin.ModelAdmin):
     inlines = [UserRelocateInline, CommentInline]
     list_filter = [VoteFilter, CommentFilter, CheckFilter, FlagFilter]
 
+    def get_search_results(self, request, queryset, search_term):
+        if not search_term:
+            return queryset, False   
+        # Split comma-separated terms and remove empty strings
+        keywords = [term.strip() for term in search_term.split(',') if term.strip()]
+        if not keywords:
+            return queryset, False
+        # Create a search query combining all keywords with OR
+        query = SearchQuery(' | '.join(keywords))
+        # Filter using the search vector
+        queryset = queryset.filter(search_vector=query)
+        return queryset, False
+
     def has_add_permission(self, request):
         return False
     
@@ -196,4 +210,3 @@ class RelocateAdmin(admin.ModelAdmin):
     
 
 admin.site.register(Relocate, RelocateAdmin)
-
