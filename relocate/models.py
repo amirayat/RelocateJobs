@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.postgres.indexes import GinIndex
+from django.contrib.postgres.search import SearchVectorField
 
 
 class ActiveRelocateManager(models.Manager):
@@ -16,6 +18,7 @@ class Relocate(models.Model):
     text = models.TextField()
     active = models.BooleanField(default=True)
     published_on_linkedin = models.BooleanField(default=False)
+    search_vector = SearchVectorField(null=True, editable=False)
 
     # Default manager
     objects = ActiveRelocateManager()
@@ -25,6 +28,9 @@ class Relocate(models.Model):
     class Meta:
         verbose_name = "Job"
         verbose_name_plural = "Jobs"
+        indexes = [
+            GinIndex(fields=['search_vector']),
+        ]
 
 
 class UserRelocate(models.Model):
