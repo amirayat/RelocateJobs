@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    'django_crontab',
+    "django_crontab",
+    "django.contrib.postgres",
 
     "job.apps.JobConfig",
     "scraper.apps.ScraperConfig",

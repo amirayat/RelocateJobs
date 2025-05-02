@@ -10,6 +10,7 @@ class Relocate(models.Model):
     gathered_at = models.DateTimeField(auto_now_add=True)
     upvotes = models.PositiveIntegerField(default=0)
     text = models.TextField()
+    active = models.BooleanField(default=True)
     published_on_linkedin = models.BooleanField(default=False)
 
     class Meta:
