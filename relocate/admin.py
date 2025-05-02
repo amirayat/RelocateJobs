@@ -29,13 +29,6 @@ class CommentInline(admin.TabularInline):
     model = Comment
     fields = (
         'content',
-        'likes',
-        'dislikes',
-    )
-    readonly_fields = (
-        'content',
-        'likes',
-        'dislikes',
     )
     can_delete = False
     extra = 0

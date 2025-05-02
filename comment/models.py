@@ -8,8 +8,9 @@ class Comment(models.Model):
     """
     job = models.ForeignKey('relocate.Relocate', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies')
     content = models.TextField()
-    likes = models.PositiveIntegerField(default=0)
-    dislikes = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        date = self.created_at.strftime("%Y-%m-%d")
+        return f"Commented on {date}"
