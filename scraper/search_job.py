@@ -2,6 +2,7 @@ import os
 import sys
 import time
 import django
+import random
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -57,8 +58,8 @@ def search_linkedin_jobs():
     based on given locations and keywords
     """
     while True:
-        locations = Location.objects.all().values_list('keyword', flat=True).distinct()
-        keywords = Search.objects.all().values_list('keyword', flat=True).distinct()
+        locations = random.shuffle(list(Location.objects.all().values_list('keyword', flat=True).distinct()))
+        keywords = random.shuffle(list(Search.objects.all().values_list('keyword', flat=True).distinct()))
         gathered_jobs = list(Job.objects.all().values_list('job_id', flat=True).distinct())
 
         for page in range(40):
