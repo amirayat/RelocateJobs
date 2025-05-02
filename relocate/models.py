@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class ActiveRelocateManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(active=True)
+
 class Relocate(models.Model):
     """
     linkedin relocate job model
@@ -12,6 +16,11 @@ class Relocate(models.Model):
     text = models.TextField()
     active = models.BooleanField(default=True)
     published_on_linkedin = models.BooleanField(default=False)
+
+    # Default manager
+    objects = ActiveRelocateManager()
+    # Include all objects manager
+    all_objects = models.Manager()
 
     class Meta:
         verbose_name = "Job"
