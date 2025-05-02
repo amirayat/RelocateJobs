@@ -87,7 +87,9 @@ class CheckFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value() == "Yes":
-            return queryset.filter(userrelocate__checked=True).all()
+            return queryset.filter(
+                userrelocate__checked=True,
+                userrelocate__user=request.user).all()
         if self.value() == "No":
             return queryset.filter(userrelocate__checked=False).all()
         
@@ -105,7 +107,9 @@ class FlagFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value() == "Yes":
-            return queryset.filter(userrelocate__flag=True).all()
+            return queryset.filter(
+                userrelocate__flag=True, 
+                userrelocate__user=request.user).all()
         if self.value() == "No":
             return queryset.filter(userrelocate__flag=False).all()
 
