@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import path, reverse
 from django.contrib import admin
@@ -15,11 +16,13 @@ class UserRelocateInline(admin.TabularInline):
         'flag',
         'note',
     )
-    can_delete = False
     extra = 0  # Shows exactly 1 empty form
     max_num = 1  # Maximum number of forms (including existing)
     verbose_name = "My Note"  # Single item title
     verbose_name_plural = "My Notes"  # Plural title
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(user=request.user)
 
 
 class CommentInline(admin.TabularInline):
@@ -117,6 +120,7 @@ class FlagFilter(admin.SimpleListFilter):
 class RelocateAdmin(admin.ModelAdmin):
     list_per_page = 10
     fields = (
+        'gathered_at',
         'upvote_button',
         'job_url_clickable',
         'upvotes',
@@ -126,6 +130,7 @@ class RelocateAdmin(admin.ModelAdmin):
         'text',
     )
     readonly_fields = (
+        'gathered_at',
         'upvote_button',
         'job_url_clickable',
         'id',
@@ -149,6 +154,25 @@ class RelocateAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
         extra_context['show_save_and_continue'] = False
         return super().change_view(request, object_id, form_url, extra_context)
+    
+    def save_formset(self, request, form, formset, change):
+        instances = formset.save(commit=False)
+        for instance in instances:
+            if not instance.pk:  # Only for new instances
+                instance.user = request.user
+            instance.save()
+        formset.save()
+
+    def response_post_save_change(self, request, obj):
+        """
+        Override to redirect back to the change page after saving
+        """
+        return HttpResponseRedirect(
+            reverse('admin:%s_%s_change' % (
+                obj._meta.app_label,
+                obj._meta.model_name
+            ), args=[obj.pk])
+        )
     
     def get_urls(self):
         urls = super().get_urls()
