@@ -5,3 +5,6 @@ class AdminSoftDashboardConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'admin_soft'
     icon = 'fa fa-user'
+
+    def ready(self):
+        import admin_soft.signals
