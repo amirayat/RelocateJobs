@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import path, reverse
@@ -88,7 +89,10 @@ class CheckFilter(admin.SimpleListFilter):
                 userrelocate__checked=True,
                 userrelocate__user=request.user).all()
         if self.value() == "No":
-            return queryset.filter(userrelocate__checked=False).all()
+            return queryset.filter(
+                Q(userrelocate__user=request.user, userrelocate__checked=False) |  # User's UserRelocate with checked=False
+                ~Q(userrelocate__user=request.user)  # No UserRelocate for this user
+                ).distinct()
         
 
 class FlagFilter(admin.SimpleListFilter):
@@ -108,7 +112,10 @@ class FlagFilter(admin.SimpleListFilter):
                 userrelocate__flag=True, 
                 userrelocate__user=request.user).all()
         if self.value() == "No":
-            return queryset.filter(userrelocate__flag=False).all()
+            return queryset.filter(
+                Q(userrelocate__user=request.user, userrelocate__flag=False) |  # User's UserRelocate with flag=False
+                ~Q(userrelocate__user=request.user)  # No UserRelocate for this user
+                ).distinct()
 
 
 class RelocateAdmin(admin.ModelAdmin):
