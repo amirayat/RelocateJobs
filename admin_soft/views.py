@@ -29,8 +29,8 @@ def index(request):
     nine_days_ago = timezone.now().date() - timedelta(days=8)
     return render(request, 'admin/index.html', {'segment': 'index', 
                                                 'chart': chart,
-                                                'processed_jobs': Job.objects.count(),
-                                                'relocation_jobs': Job.objects.filter(relocation=True).count(),
+                                                'processed_jobs': Job.all_objects.count(),
+                                                'relocation_jobs': Job.all_objects.filter(relocation=True).count(),
                                                 'locations': Location.objects.count(),
                                                 'locations_list': Location.objects.all(),
                                                 'search_terms': Search.objects.count(),
