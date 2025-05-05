@@ -176,17 +176,6 @@ class RelocateAdmin(admin.ModelAdmin):
                 instance.user = request.user
             instance.save()
         formset.save()
-
-    def response_post_save_change(self, request, obj):
-        """
-        Override to redirect back to the change page after saving
-        """
-        return HttpResponseRedirect(
-            reverse('admin:%s_%s_change' % (
-                obj._meta.app_label,
-                obj._meta.model_name
-            ), args=[obj.pk])
-        )
     
     def get_urls(self):
         urls = super().get_urls()
