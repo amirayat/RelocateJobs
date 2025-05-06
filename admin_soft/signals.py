@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 @receiver(post_save, sender=User)
 def add_user_to_staff_group(sender, instance, created, **kwargs):
-    if created:  # Only for new users
+    if created and not instance.is_superuser:  # Only for new users
         staff_group = Group.objects.get(name='Staff Members')  
         instance.groups.add(staff_group)
         instance.is_staff = True
