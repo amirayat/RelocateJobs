@@ -133,8 +133,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/production/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+WHITENOISE_STATIC_PREFIX = '/static/'
 
 
 # if not DEBUG:
@@ -145,8 +146,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/dashboard/'
-LOGIN_URL = '/dashboard/accounts/login/'
+LOGIN_REDIRECT_URL = '/production/dashboard/'
+LOGIN_URL = '/production/dashboard/accounts/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # https://pypi.org/project/django-crontab/
