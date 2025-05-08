@@ -20,6 +20,10 @@
             "DB_USER": "postgres",
             "DB_PASSWORD": "qYK9M$9P8%B",
             "DB_HOST": "relocateworks.clwgqw2ush44.us-east-2.rds.amazonaws.com"
+        },
+        "vpc_config" : {
+            "SubnetIds": ["subnet-0083e5982b3239072", "subnet-03adeaf70cfe19468","subnet-0e0c398471eda23b0"],
+            "SecurityGroupIds": ["sg-036227c469b5724d8"]
         }
     },
     "production_ap_east_1": {
