@@ -1,4 +1,5 @@
 import time
+import random
 from langdetect import detect
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -48,8 +49,8 @@ def search_linkedin_jobs():
     search linkedin jobs
     based on given locations and keywords
     """
-    locations = Location.objects.all().values_list('keyword', flat=True).distinct()
-    keywords = Search.objects.all().values_list('keyword', flat=True).distinct()
+    locations = random.shuffle(Location.objects.all().values_list('keyword', flat=True).distinct())
+    keywords = random.shuffle(Search.objects.all().values_list('keyword', flat=True).distinct())
     gathered_jobs = list(Job.objects.all().values_list('job_id', flat=True).distinct())
 
     for page in range(40):
@@ -105,6 +106,14 @@ def check_linkedin_jobs():
         try:
             # Wait until a specific element is present
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "main")))
+            try:
+                # locate and click the "See more" button
+                see_more = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Click to see more description']"))
+                )
+                see_more.click()
+            except:
+                pass
             # Find the <main> element and get its visible text
             main_text = driver.find_element(By.TAG_NAME, "main").text
             # job offers relocation

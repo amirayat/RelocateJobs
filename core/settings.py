@@ -148,12 +148,22 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_URL = '/dashboard/accounts/login/'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587  # For TLS
+# EMAIL_PORT = 465  # For SSL (alternative)
+EMAIL_USE_TLS = True  # If using port 587
+# EMAIL_USE_SSL = True  # If using port 465
+EMAIL_HOST_USER = 'noreply@relocate.works'  # Your Zoho email address
+EMAIL_HOST_PASSWORD = 'kJExJKNuWTRR'  # The app password you generated
+DEFAULT_FROM_EMAIL = 'noreply@relocate.works'  # Same as EMAIL_HOST_USER
+SERVER_EMAIL = 'noreply@relocate.works'  # For error notifications
 
 # https://pypi.org/project/django-crontab/
 CRONJOBS = [
-    ('0 1-23/2 * * * timeout 3500', 'scraper.cron.search_linkedin_jobs'), # 1am, 3am, 5am, 7am, 9am, 11am, 1pm, 3pm, 5pm, 7pm, 9pm, and 11pm
-    ('0 */2 * * * timeout 3500', 'scraper.cron.check_linkedin_jobs'), # 12am, 2am, 4am, 6am, 8am, 10am, 12pm, 2pm, 4pm, 6pm, 8pm, and 10pm
-    ('59 23 * * *', 'job.cron.deactivate_jobs'), # every day 11:59am
-    ('59 23 * * *', 'relocate.cron.deactivate_relocates'), # every day 11:59am
+    ('0 1-23/2 * * * timeout 3500', 'scraper.cron.search_linkedin_jobs', '>> /tmp/search_linkedin_jobs.log'), # 1am, 3am, 5am, 7am, 9am, 11am, 1pm, 3pm, 5pm, 7pm, 9pm, and 11pm
+    ('0 */2 * * * timeout 3500', 'scraper.cron.check_linkedin_jobs', '>> /tmp/check_linkedin_jobs.log'), # 12am, 2am, 4am, 6am, 8am, 10am, 12pm, 2pm, 4pm, 6pm, 8pm, and 10pm
+    ('59 23 * * *', 'job.cron.deactivate_jobs', '>> /tmp/deactivate_jobs.log'), # every day 11:59am
+    ('59 23 * * *', 'relocate.cron.deactivate_relocates', '>> /tmp/deactivate_relocates.log'), # every day 11:59am
 ]
