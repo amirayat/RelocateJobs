@@ -147,7 +147,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_URL = '/dashboard/accounts/login/'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587  # For TLS
+# EMAIL_PORT = 465  # For SSL (alternative)
+EMAIL_USE_TLS = True  # If using port 587
+# EMAIL_USE_SSL = True  # If using port 465
+EMAIL_HOST_USER = 'noreply@relocate.works'  # Your Zoho email address
+EMAIL_HOST_PASSWORD = 'kJExJKNuWTRR'  # The app password you generated
+DEFAULT_FROM_EMAIL = 'noreply@relocate.works'  # Same as EMAIL_HOST_USER
+SERVER_EMAIL = 'noreply@relocate.works'  # For error notifications
 
 # https://pypi.org/project/django-crontab/
 CRONJOBS = [
