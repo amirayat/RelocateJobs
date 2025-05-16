@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Token, OAUTH
+
+
+admin.site.register(Token)
+admin.site.register(OAUTH)
