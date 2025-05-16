@@ -19,7 +19,9 @@
         "environment_variables": {
             "DB_USER": "postgres",
             "DB_PASSWORD": "qYK9M$9P8%B",
-            "DB_HOST": "relocateworks.clwgqw2ush44.us-east-2.rds.amazonaws.com"
+            "DB_HOST": "relocateworks.clwgqw2ush44.us-east-2.rds.amazonaws.com",
+            "LINKEDIN_CLIENT_ID":"77zz87a2c1j0uz",
+            "LINKEDIN_CLIENT_SECRET":"WPL_AP1.KacdCftLQBN8Zhrq.x7lgag=="
         },
         "vpc_config" : {
             "SubnetIds": ["subnet-0083e5982b3239072", "subnet-03adeaf70cfe19468","subnet-0e0c398471eda23b0"],
