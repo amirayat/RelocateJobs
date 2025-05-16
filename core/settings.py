@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "donate.apps.DonateConfig",
     "comment.apps.CommentConfig",
     "relocate.apps.RelocateConfig",
+    "linkedin.apps.LinkedinConfig",
 ]
 
 MIDDLEWARE = [

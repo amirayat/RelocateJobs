@@ -22,6 +22,7 @@ urlpatterns = [
     path("job/", admin.site.urls, name='admin'),
     path("dashboard/", include('admin_soft.urls')),
     path("donate/", include('donate.urls')),
+    path("linkedin/", include('linkedin.urls')),
     path("", include('home.urls')),
 ]
 
