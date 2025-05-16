@@ -1,6 +1,6 @@
 import os
 import requests
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 from dotenv import load_dotenv
 
 from linkedin.models import OAUTH
@@ -18,13 +18,13 @@ class LinkedInPoster:
             client_id (str): Your LinkedIn app client ID
             client_secret (str): Your LinkedIn app client secret
             redirect_uri (str): Your authorized redirect URI
-            company_urn (str): Your company URN (format: "urn:li:organization:123456")
+            person_urn (str): Your personal URN (format: "urn:li:organization:123456")
             refresh_token (str, optional): Existing refresh token if available
         """
         self.client_id = os.getenv('LINKEDIN_CLIENT_ID')
         self.client_secret = os.getenv('LINKEDIN_CLIENT_SECRET')
         self.redirect_uri = "https://relocate.works/linkedin/callback/"
-        self.company_urn = "urn:li:organization:107318690"
+        self.person_urn = "urn:li:person:1265428294"
         self.refresh_token = None
         self.access_token = None
         
@@ -34,10 +34,10 @@ class LinkedInPoster:
             'response_type': 'code',
             'client_id': self.client_id,
             'redirect_uri': self.redirect_uri,
-            'scope': 'w_organization_social r_organization_admin',
+            'scope': 'w_member_social',
             'state': 'linkedin_auth'
         }
-        return f"https://www.linkedin.com/oauth/v2/authorization?{urlencode(params)}"
+        return f"https://www.linkedin.com/oauth/v2/authorization?{urlencode(params, quote_via=quote)}"
     
     def fetch_tokens(self):
         """
@@ -98,8 +98,6 @@ class LinkedInPoster:
             dict: API response from LinkedIn
         """
         if not self.access_token:
-            url = self.get_auth_url()
-            response = requests.get(url)
             self.fetch_tokens()
             
         headers = {
@@ -109,7 +107,7 @@ class LinkedInPoster:
         }
         
         payload = {
-            "author": self.company_urn,
+            "author": self.person_urn,
             "lifecycleState": "PUBLISHED",
             "specificContent": {
                 "com.linkedin.ugc.ShareContent": {
