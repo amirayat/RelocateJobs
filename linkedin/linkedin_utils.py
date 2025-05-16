@@ -43,7 +43,7 @@ class LinkedInPoster:
         }
         
         payload = {
-            "author": "urn:li:company:107318690",
+            "author": "urn:li:company:107318690", # "urn:li:person:7_FNgzDEmw"
             "lifecycleState": "PUBLISHED",
             "specificContent": {
                 "com.linkedin.ugc.ShareContent": {
