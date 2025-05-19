@@ -58,9 +58,12 @@ def search_linkedin_jobs():
     based on given locations and keywords
     """
     while True:
-        locations = random.shuffle(list(Location.objects.all().values_list('keyword', flat=True).distinct()))
-        keywords = random.shuffle(list(Search.objects.all().values_list('keyword', flat=True).distinct()))
+        locations = list(Location.objects.all().values_list('keyword', flat=True).distinct())
+        keywords = list(Search.objects.all().values_list('keyword', flat=True).distinct())
         gathered_jobs = list(Job.objects.all().values_list('job_id', flat=True).distinct())
+
+        random.shuffle(locations)
+        random.shuffle(keywords)
 
         for page in range(40):
             for location in locations:
