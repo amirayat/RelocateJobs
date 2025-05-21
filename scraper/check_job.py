@@ -23,6 +23,7 @@ from scraper.models import Linkedin
 from job.models import Job
 from relocate.models import Relocate
 from llm.mistral_ai import has_visa_sponsorship
+from linkedin.linkedin_utils import LinkedInPoster
 
 
 # Set up Chrome
@@ -60,6 +61,7 @@ def check_linkedin_jobs():
     for relocation, visa sponsorship 
     """
     while True:
+        li = LinkedInPoster()
         jobs_to_check = Job.objects.filter(checked=False)
         # term conditions in the job details
         relocation_words = ['visa', 'relocat', 'immigra', 'sponsor', 'permit', 'authoriz',
@@ -92,6 +94,8 @@ def check_linkedin_jobs():
                     job.relocation = True
                     # add job to relocate
                     Relocate.objects.create(job_url=job_url, text=main_text)
+                    li_post_text = "\n".join(main_text.splitlines()[:10]+[job_url])
+                    li.post_text(li_post_text)
                 # save the job
                 job.checked = True
                 job.save()
