@@ -72,7 +72,7 @@ def check_linkedin_jobs():
         if not jobs_to_check.exists():
             time.sleep(5*60)
         
-        for job in jobs_to_check:
+        for job in jobs_to_check.order_by("?"):
             job_id = job.job_id
             job_url = f'https://www.linkedin.com/jobs/view/{job_id}/'
             driver.get(job_url)
