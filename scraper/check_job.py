@@ -70,7 +70,7 @@ def check_linkedin_jobs():
     
         # if there is no new unchecked Job, wait for 5 min
         if not jobs_to_check.exists():
-            time.sleep(5*60)
+            driver.quit()
         
         for job in jobs_to_check.order_by("?"):
             job_id = job.job_id
