@@ -2,11 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.indexes import GinIndex
 from django.contrib.postgres.search import SearchVectorField
+from django.contrib.postgres.search import SearchVector
 
 
 class ActiveRelocateManager(models.Manager):
+    def create(self, **kwargs):
+        # Only set search_vector if text is provided
+        if 'text' in kwargs:
+            # Create search vector from the text field
+            kwargs['search_vector'] = SearchVector('text')
+        return super().create(**kwargs)
+    
     def get_queryset(self):
         return super().get_queryset().filter(active=True)
+
 
 class Relocate(models.Model):
     """
