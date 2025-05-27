@@ -19,6 +19,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 django.setup()
 
 
+from django.contrib.postgres.search import SearchVector
 from scraper.models import Linkedin
 from job.models import Job
 from relocate.models import Relocate
@@ -94,7 +95,8 @@ def check_linkedin_jobs():
                 if detect(main_text) == 'en' and any(word in main_text for word in relocation_words) and has_visa_sponsorship(main_text):
                     job.relocation = True
                     # add job to relocate
-                    Relocate.objects.create(job_url=job_url, text=main_text)
+                    instance = Relocate.objects.create(job_url=job_url, text=main_text)
+                    Relocate.objects.filter(id=instance.pk).update(search_vector=SearchVector('text'))
                     li_post_text = "\n".join(main_text.splitlines()[:10]+[job_url])
                     li.post_text(li_post_text)
                 # save the job
