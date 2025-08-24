@@ -1,6 +1,6 @@
 {
     "production": {
-        "aws_region": "us-east-2",
+        "aws_region": "eu-north-1",
         "django_settings": "core.settings",
         "exclude": [
             "boto3",
@@ -18,96 +18,12 @@
         "memory_size": 1536,
         "environment_variables": {
             "DB_USER": "postgres",
-            "DB_PASSWORD": "qYK9M$9P8%B",
-            "DB_HOST": "relocateworks.clwgqw2ush44.us-east-2.rds.amazonaws.com"
+            "DB_PASSWORD": "jDzefh1HhY5q14Ya",
+            "DB_HOST": "relocateworks.cdu0o8aymwsm.eu-north-1.rds.amazonaws.com"
         },
         "vpc_config" : {
-            "SubnetIds": ["subnet-0083e5982b3239072", "subnet-03adeaf70cfe19468","subnet-0e0c398471eda23b0"],
-            "SecurityGroupIds": ["sg-036227c469b5724d8"]
+            "SubnetIds": ["subnet-0568c9ba2c1257a73", "subnet-0e65632d430a2d5c3","subnet-0f886b231b0c8ff75"],
+            "SecurityGroupIds": ["sg-0cfd2fc5660a132e5"]
         }
-    },
-    "production_ap_east_1": {
-        "aws_region": "ap-east-1",
-        "extends": "production"
-    },
-    "production_ap_northeast_1": {
-        "aws_region": "ap-northeast-1",
-        "extends": "production"
-    },
-    "production_ap_northeast_2": {
-        "aws_region": "ap-northeast-2",
-        "extends": "production"
-    },
-    "production_ap_northeast_3": {
-        "aws_region": "ap-northeast-3",
-        "extends": "production"
-    },
-    "production_ap_south_1": {
-        "aws_region": "ap-south-1",
-        "extends": "production"
-    },
-    "production_ap_southeast_1": {
-        "aws_region": "ap-southeast-1",
-        "extends": "production"
-    },
-    "production_ap_southeast_2": {
-        "aws_region": "ap-southeast-2",
-        "extends": "production"
-    },
-    "production_ca_central_1": {
-        "aws_region": "ca-central-1",
-        "extends": "production"
-    },
-    "production_cn_north_1": {
-        "aws_region": "cn-north-1",
-        "extends": "production"
-    },
-    "production_cn_northwest_1": {
-        "aws_region": "cn-northwest-1",
-        "extends": "production"
-    },
-    "production_eu_central_1": {
-        "aws_region": "eu-central-1",
-        "extends": "production"
-    },
-    "production_eu_north_1": {
-        "aws_region": "eu-north-1",
-        "extends": "production"
-    },
-    "production_eu_west_1": {
-        "aws_region": "eu-west-1",
-        "extends": "production"
-    },
-    "production_eu_west_2": {
-        "aws_region": "eu-west-2",
-        "extends": "production"
-    },
-    "production_eu_west_3": {
-        "aws_region": "eu-west-3",
-        "extends": "production"
-    },
-    "production_sa_east_1": {
-        "aws_region": "sa-east-1",
-        "extends": "production"
-    },
-    "production_us_east_1": {
-        "aws_region": "us-east-1",
-        "extends": "production"
-    },
-    "production_us_gov_east_1": {
-        "aws_region": "us-gov-east-1",
-        "extends": "production"
-    },
-    "production_us_gov_west_1": {
-        "aws_region": "us-gov-west-1",
-        "extends": "production"
-    },
-    "production_us_west_1": {
-        "aws_region": "us-west-1",
-        "extends": "production"
-    },
-    "production_us_west_2": {
-        "aws_region": "us-west-2",
-        "extends": "production"
     }
 }
