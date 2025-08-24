@@ -12,7 +12,7 @@
         "profile_name": "default",
         "project_name": "relocateworks",
         "runtime": "python3.8",
-        "s3_bucket": "zappa-fi6i3puhh",
+        "s3_bucket": "zappa-relocateworks",
         "timeout_seconds": 60,
         "keep_warm": true,
         "memory_size": 1536,
