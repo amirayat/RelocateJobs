@@ -8,6 +8,7 @@ class ActiveRelocateManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(active=True)
 
+
 class Relocate(models.Model):
     """
     linkedin relocate job model

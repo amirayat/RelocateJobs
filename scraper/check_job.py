@@ -19,10 +19,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 django.setup()
 
 
+from django.contrib.postgres.search import SearchVector
 from scraper.models import Linkedin
 from job.models import Job
 from relocate.models import Relocate
 from llm.mistral_ai import has_visa_sponsorship
+from linkedin.linkedin_utils import LinkedInPoster
 
 
 # Set up Chrome
@@ -60,6 +62,7 @@ def check_linkedin_jobs():
     for relocation, visa sponsorship 
     """
     while True:
+        li = LinkedInPoster()
         jobs_to_check = Job.objects.filter(checked=False)
         # term conditions in the job details
         relocation_words = ['visa', 'relocat', 'immigra', 'sponsor', 'permit', 'authoriz',
@@ -68,9 +71,10 @@ def check_linkedin_jobs():
     
         # if there is no new unchecked Job, wait for 5 min
         if not jobs_to_check.exists():
-            time.sleep(5*60)
+            driver.quit()
+            break
         
-        for job in jobs_to_check:
+        for job in jobs_to_check.order_by("?"):
             job_id = job.job_id
             job_url = f'https://www.linkedin.com/jobs/view/{job_id}/'
             driver.get(job_url)
@@ -91,7 +95,10 @@ def check_linkedin_jobs():
                 if detect(main_text) == 'en' and any(word in main_text for word in relocation_words) and has_visa_sponsorship(main_text):
                     job.relocation = True
                     # add job to relocate
-                    Relocate.objects.create(job_url=job_url, text=main_text)
+                    instance = Relocate.objects.create(job_url=job_url, text=main_text)
+                    Relocate.objects.filter(id=instance.pk).update(search_vector=SearchVector('text'))
+                    li_post_text = "\n".join(main_text.splitlines()[:10]+[job_url])
+                    li.post_text(li_post_text)
                 # save the job
                 job.checked = True
                 job.save()
