@@ -127,6 +127,7 @@ class RelocateAdmin(admin.ModelAdmin):
         'text',
     )
     list_display = (
+        'id',
         'text',
     )
     readonly_fields = (
